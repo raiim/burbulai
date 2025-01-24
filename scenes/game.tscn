@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3t687n3x4y75"]
+
+[ext_resource type="PackedScene" uid="uid://bjyapu12iy2un" path="res://scenes/player.tscn" id="1_ify5f"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_lvg7v"]
+[ext_resource type="PackedScene" uid="uid://j6l8vwesy68v" path="res://scenes/background.tscn" id="2_1eots"]
+[ext_resource type="PackedScene" uid="uid://sdrhb1nosyjd" path="res://scenes/vignete.tscn" id="3_7aay7"]
+[ext_resource type="PackedScene" uid="uid://bn3jd2ud18o3t" path="res://scenes/UI.tscn" id="3_cgf1p"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_lvg7v")
+
+[node name="Background" parent="." instance=ExtResource("2_1eots")]
+position = Vector2(959, -3000)
+
+[node name="Vignete" parent="." instance=ExtResource("3_7aay7")]
+position = Vector2(960, 540)
+
+[node name="Player" parent="." instance=ExtResource("1_ify5f")]
+position = Vector2(968, 537)
+speed = 600
+
+[node name="Ui" parent="." instance=ExtResource("3_cgf1p")]
