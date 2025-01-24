@@ -17,8 +17,6 @@ position = Vector2(960, 540)
 
 [node name="Player" parent="." instance=ExtResource("1_ify5f")]
 position = Vector2(968, 537)
-acceleration = 200
-deceleration = 100
-damping = 0.9
+acceleration = 0.025
 
 [node name="Ui" parent="." instance=ExtResource("3_cgf1p")]

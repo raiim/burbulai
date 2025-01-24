@@ -2,9 +2,7 @@ extends CharacterBody2D
 
 
 @export var max_speed = 300
-@export var acceleration = 20
-@export var deceleration = 100
-@export var damping = .95
+@export var acceleration = 0.025
 @onready var player_skin: Sprite2D = $Sprite2D
 
 func _physics_process(_delta: float) -> void:
@@ -23,15 +21,15 @@ func _physics_process(_delta: float) -> void:
 		player_skin.scale.y = 1
 	elif Input.is_action_pressed("move_down"):
 		player_skin.scale.y = -1
-	
-	print(direction)
-	
+
 	
 	if direction != Vector2.ZERO:
-		print("moving!")
-		velocity += direction_normalized * acceleration
-		velocity = velocity.clamp(Vector2(-1 * max_speed, -1 * max_speed), Vector2(max_speed, max_speed))
+		velocity.x = lerp(velocity.x, direction_normalized.x * max_speed, acceleration)
+		velocity.y = lerp(velocity.y, direction_normalized.y * max_speed, acceleration)
 	else:
-		velocity *= damping
+		velocity.x = lerp(velocity.x, 0.0, acceleration)
+		velocity.y = lerp(velocity.y, 0.0, acceleration)
+		
+	print(velocity)
 		
 	move_and_slide()
