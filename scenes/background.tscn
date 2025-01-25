@@ -1,36 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://j6l8vwesy68v"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_1ruy4"]
-[ext_resource type="Texture2D" uid="uid://bhdduw3gq2hoh" path="res://assets/textures/background.png" id="1_mxilr"]
+[ext_resource type="Texture2D" uid="uid://b1vogvjv0lflt" path="res://assets/textures/background.png" id="1_mxilr"]
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_1ruy4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
+scale = Vector2(2, 1)
 texture = ExtResource("1_mxilr")
-
-[node name="deleteMe" type="Node2D" parent="."]
-
-[node name="Label" type="Label" parent="deleteMe"]
-offset_left = -307.0
-offset_top = 4139.0
-offset_right = -131.0
-offset_bottom = 4162.0
-text = "--------3000"
-
-[node name="Label2" type="Label" parent="deleteMe"]
-offset_left = -307.0
-offset_top = 3065.0
-offset_right = -131.0
-offset_bottom = 3088.0
-text = "--------2000
-"
-
-[node name="Label3" type="Label" parent="deleteMe"]
-offset_left = -307.0
-offset_top = 2095.0
-offset_right = -131.0
-offset_bottom = 2118.0
-text = "--------1000
-"

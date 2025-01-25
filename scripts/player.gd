@@ -9,6 +9,7 @@ func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	var direction_normalized = direction.normalized()	
 	var actual_velocity = sqrt(pow(velocity.x, 2) + pow(velocity.y, 2))
+	var full_player_rotation_deg = rad_to_deg(player_sprite.rotation)
 	
 	# apply velocity to player by increasing moving speed by 'acceleration'
 	if direction != Vector2.ZERO:
@@ -24,9 +25,15 @@ func _physics_process(_delta: float) -> void:
 	if direction_normalized != Vector2.ZERO:
 		# the computed angle is off by 90 degrees so we just add it here
 		var target = direction_normalized.angle() + deg_to_rad(90)
-		player_sprite.rotation = lerp_angle(player_sprite.rotation, target, rotation_speed)
-		
-	# TODO: add debug label for velocity
+		rotation = lerp_angle(rotation, target, rotation_speed)
+	
+	#if Input.is_action_just_pressed("move_left"):
+		#player_sprite.scale.x = -.6
+	#if Input.is_action_just_pressed("move_right"):
+		#player_sprite.scale.x = .6
+	
+	# TODO: add debug labels
 	print("velocity: ", actual_velocity)
+	print("rotation: ", full_player_rotation_deg)
 		
 	move_and_slide()
