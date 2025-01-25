@@ -8,6 +8,11 @@ extends CharacterBody2D
 @onready var projectile = load("res://scenes/projectile.tscn")
 @onready var emmiter = get_node("BulletEmmiter")
 
+var projectile_return_timer = 3.0
+var is_shoot_cooldown = false
+var proj_instance
+
+
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	var direction_normalized = direction.normalized()	
@@ -30,13 +35,9 @@ func _physics_process(_delta: float) -> void:
 		var target = direction_normalized.angle() + deg_to_rad(90)
 		rotation = lerp_angle(rotation, target, rotation_speed)
 	
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_released("shoot") && !is_shoot_cooldown:
 		shoot()
-	
-	#if Input.is_action_just_pressed("move_left"):
-		#player_sprite.scale.x = -.6
-	#if Input.is_action_just_pressed("move_right"):
-		#player_sprite.scale.x = .6
+		
 	
 	# TODO: add debug labels
 	#print("velocity: ", _actual_velocity)
@@ -46,8 +47,14 @@ func _physics_process(_delta: float) -> void:
 	
 # TODO: move logic to 'harpoon' entity
 func shoot():
-	var instance = projectile.instantiate()
-	instance.spawn_position = emmiter.global_position
-	instance.target_position = get_global_mouse_position()
-	main.add_child.call_deferred(instance)
+	proj_instance = projectile.instantiate()
+	proj_instance.spawn_position = emmiter.global_position
+	proj_instance.target_position = get_global_mouse_position()
+	main.add_child.call_deferred(proj_instance)
+	shoot_timer()
+	
+func shoot_timer():
+	is_shoot_cooldown = true	
+	await get_tree().create_timer(projectile_return_timer).timeout
+	is_shoot_cooldown = false
 	

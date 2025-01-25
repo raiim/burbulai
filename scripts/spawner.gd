@@ -1,5 +1,16 @@
 extends Marker2D
 
+# speed chart
+# lamp - 400
+
+# deceleration chart
+# lamp - 0.009
+
+# rotation_speed chart
+# lamp - 0.025
+
+# timer_value chart
+# lamp - 3.0
 
 @export var spawn_interval_min: float = 2
 @export var spawn_interval_max: float = 3
