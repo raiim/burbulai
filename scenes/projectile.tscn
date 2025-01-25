@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cax7lpjuio0a3" path="res://assets/textures/projectile.png" id="1_sixp8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxqei"]
-height = 100.0
+height = 90.0
 
 [node name="Projectile" type="CharacterBody2D"]
 position = Vector2(0, 100)
@@ -13,9 +13,13 @@ collision_mask = 2
 script = ExtResource("1_eavpi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(1, -55)
+rotation = -0.0174533
+scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_sixp8")
+region_enabled = true
+region_rect = Rect2(1708.99, 543.626, 791.948, 3645.37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(0, -55)
 shape = SubResource("CapsuleShape2D_nxqei")

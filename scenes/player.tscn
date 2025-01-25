@@ -1,23 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjyapu12iy2un"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tncp8"]
-[ext_resource type="Texture2D" uid="uid://c72cvq7hivq00" path="res://assets/textures/dev_character.png" id="2_qjwjt"]
+[ext_resource type="Texture2D" uid="uid://ufyfnyiuoejr" path="res://assets/textures/character.png" id="2_wdpkg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymifo"]
-height = 100.0
+radius = 20.0
+height = 198.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_tncp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(43, 9)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_qjwjt")
-region_rect = Rect2(0, 47.666, 128, 80)
+position = Vector2(45, 21)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_wdpkg")
+region_rect = Rect2(1193.76, 113.619, 2923.16, 4237.77)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 19)
 shape = SubResource("CapsuleShape2D_ymifo")
 
 [node name="BulletEmmiter" type="Marker2D" parent="."]
-position = Vector2(80, -31)
+position = Vector2(71, -21)
