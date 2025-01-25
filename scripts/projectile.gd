@@ -1,20 +1,20 @@
 extends CharacterBody2D
 
-@export var speed = 500
-@export var gravity = 100
+@export var speed : float = 700
+@export var deceleration : float = .0015
+@export var rotation_speed : float = 0.02
 
 var spawn_position : Vector2
 var target_position : Vector2
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	global_position = spawn_position
+	global_position = Vector2(spawn_position)
 	rotation = get_angle_to(target_position) + deg_to_rad(90)
-	print("global: ", global_position)
-	print("target: ", target_position)
-	print("rot_to_target", rotation)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	velocity = Vector2(0, -1).rotated(rotation) * speed
+
+func _process(delta: float) -> void:
+	velocity = lerp(velocity, Vector2.ZERO, deceleration)
+	velocity.y = lerp(velocity.y, speed, deceleration)
+	var target_rotation = velocity.angle() + deg_to_rad(90)
+	global_rotation = lerp_angle(global_rotation, target_rotation, rotation_speed)
 	move_and_slide()
