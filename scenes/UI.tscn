@@ -1,6 +1,83 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn3jd2ud18o3t"]
+[gd_scene load_steps=22 format=3 uid="uid://bn3jd2ud18o3t"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_4a3fm"]
+[ext_resource type="Texture2D" uid="uid://di76kt6wdejwf" path="res://assets/textures/hearts/heartG1.png" id="2_2eduo"]
+[ext_resource type="Texture2D" uid="uid://dqt3q4askj0p1" path="res://assets/textures/vignetes_effects/bandages.png" id="2_fs0ts"]
+[ext_resource type="Texture2D" uid="uid://dcdyq13qkylxo" path="res://assets/textures/hearts/heartG2.png" id="3_llv2w"]
+[ext_resource type="Texture2D" uid="uid://cwg6tol27m08g" path="res://assets/textures/hearts/heartG3.png" id="4_rlbml"]
+[ext_resource type="Texture2D" uid="uid://cuhc2r7v5nlbq" path="res://assets/textures/hearts/heartG4.png" id="5_3fsn3"]
+[ext_resource type="Texture2D" uid="uid://bxiyfhd1qyeah" path="res://assets/textures/hearts/heartM1.png" id="6_1dh5x"]
+[ext_resource type="Texture2D" uid="uid://d35vnq4tavfcx" path="res://assets/textures/vignetes_effects/low health.png" id="6_b4p6c"]
+[ext_resource type="Texture2D" uid="uid://cstb6dvndik6w" path="res://assets/textures/hearts/heartM2.png" id="7_qsmkm"]
+[ext_resource type="Texture2D" uid="uid://dhhff0qppdxnd" path="res://assets/textures/hearts/heartM3.png" id="8_y41mu"]
+[ext_resource type="Texture2D" uid="uid://dgkdb8xvle1of" path="res://assets/textures/hearts/heartM4.png" id="9_4n4ds"]
+[ext_resource type="Texture2D" uid="uid://b0xxkxosp5a5m" path="res://assets/textures/hearts/HeartL1.png" id="10_q7rx8"]
+[ext_resource type="Texture2D" uid="uid://ccawakluclf5j" path="res://assets/textures/hearts/HeartL2.png" id="11_bgagd"]
+[ext_resource type="Texture2D" uid="uid://e4usmjwjjf6c" path="res://assets/textures/hearts/HeartL3.png" id="12_fiygw"]
+[ext_resource type="Texture2D" uid="uid://di62n62ws37w7" path="res://assets/textures/hearts/HeartL4.png" id="13_fy03x"]
+[ext_resource type="Texture2D" uid="uid://u0txdr22fcfl" path="res://assets/textures/vignetes_effects/VigneteNew.png" id="14_n3tx4"]
+[ext_resource type="Texture2D" uid="uid://chvs8wjt3lq1e" path="res://assets/textures/vignetes_effects/Vignetedamagedmedium.png" id="15_7oc0i"]
+[ext_resource type="Texture2D" uid="uid://dfbphssd1absj" path="res://assets/textures/vignetes_effects/Vignetedamaged.png" id="16_7ncnu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5ov6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2eduo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_llv2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rlbml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3fsn3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y2x6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1dh5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsmkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y41mu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4n4ds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_47mii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_q7rx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bgagd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fiygw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fy03x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -17,3 +94,52 @@ offset_left = 40.0
 offset_top = 93.0
 offset_right = 80.0
 offset_bottom = 116.0
+
+[node name="bandages" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_fs0ts")
+
+[node name="vignete_new" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("14_n3tx4")
+
+[node name="vignete_medium" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("15_7oc0i")
+
+[node name="vignete_damaged" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("16_7ncnu")
+
+[node name="low_health" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("6_b4p6c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 766.0
+offset_right = 162.0
+offset_bottom = 800.0
+
+[node name="health_full" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(96, 133)
+scale = Vector2(0.478, 0.5)
+sprite_frames = SubResource("SpriteFrames_l5ov6")
+autoplay = "default"
+frame_progress = 0.25248
+
+[node name="health_medium" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(105, 133)
+scale = Vector2(0.5, 0.523)
+sprite_frames = SubResource("SpriteFrames_8y2x6")
+autoplay = "default"
+frame_progress = 0.229072
+
+[node name="health_low" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(104, 168)
+scale = Vector2(0.5, 0.523)
+sprite_frames = SubResource("SpriteFrames_47mii")
+autoplay = "default"
+frame_progress = 0.519605
