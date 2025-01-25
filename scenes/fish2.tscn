@@ -7,7 +7,9 @@
 radius = 6.76717
 
 [node name="Fish2" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_4580j")
+speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
