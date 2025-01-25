@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3t687n3x4y75"]
+[gd_scene load_steps=8 format=3 uid="uid://d3t687n3x4y75"]
 
 [ext_resource type="PackedScene" uid="uid://bjyapu12iy2un" path="res://scenes/player.tscn" id="1_ify5f"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_lvg7v"]
 [ext_resource type="PackedScene" uid="uid://j6l8vwesy68v" path="res://scenes/background.tscn" id="2_1eots"]
 [ext_resource type="PackedScene" uid="uid://sdrhb1nosyjd" path="res://scenes/vignete.tscn" id="3_7aay7"]
 [ext_resource type="PackedScene" uid="uid://bn3jd2ud18o3t" path="res://scenes/UI.tscn" id="3_cgf1p"]
+[ext_resource type="PackedScene" uid="uid://c4gvwaaqdwend" path="res://scenes/fish.tscn" id="6_6k0f2"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="7_2b75y"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lvg7v")
@@ -20,3 +22,11 @@ position = Vector2(960, 540)
 position = Vector2(968, 537)
 
 [node name="Ui" parent="." instance=ExtResource("3_cgf1p")]
+
+[node name="Fish" parent="." instance=ExtResource("6_6k0f2")]
+position = Vector2(344, -185)
+
+[node name="Spawner" type="Marker2D" parent="."]
+position = Vector2(344, -154)
+script = ExtResource("7_2b75y")
+items = Array[PackedScene]([ExtResource("6_6k0f2")])
