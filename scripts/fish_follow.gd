@@ -18,7 +18,7 @@ func _ready() -> void:
 	is_move = true
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	look_at(player.position)
 	rotation += deg_to_rad(90)
 	
