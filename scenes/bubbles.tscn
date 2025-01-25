@@ -1,0 +1,87 @@
+[gd_scene load_steps=19 format=3 uid="uid://cbsume5t76exk"]
+
+[ext_resource type="Texture2D" uid="uid://kst3j50ygw6c" path="res://assets/anims/bubbles1.png" id="1_5wc02"]
+[ext_resource type="Texture2D" uid="uid://dr3kj3rqogvm4" path="res://assets/anims/bubbles2.png" id="2_07jga"]
+[ext_resource type="Texture2D" uid="uid://cfj46mfs6kk7q" path="res://assets/anims/bubbles3.png" id="3_ken47"]
+[ext_resource type="Texture2D" uid="uid://dx56iigrixve1" path="res://assets/anims/bubbles4.png" id="4_utfcw"]
+[ext_resource type="Texture2D" uid="uid://da203ecmqcvvp" path="res://assets/anims/bubbles5.png" id="5_avyws"]
+[ext_resource type="Texture2D" uid="uid://8jalmpkj2kha" path="res://assets/anims/bubbles6.png" id="6_1hc77"]
+[ext_resource type="Texture2D" uid="uid://b2b3l3bqg3e75" path="res://assets/anims/bubbles7.png" id="7_vrksk"]
+[ext_resource type="Texture2D" uid="uid://ncrb0f4duync" path="res://assets/anims/bubbles8.png" id="8_deevt"]
+[ext_resource type="Texture2D" uid="uid://2ftrdvuylk4x" path="res://assets/anims/bubbles9.png" id="9_j1oe6"]
+[ext_resource type="Texture2D" uid="uid://qrilnlvivx63" path="res://assets/anims/bubbles10.png" id="10_ynqee"]
+[ext_resource type="Texture2D" uid="uid://cbtjoubidfar3" path="res://assets/anims/bubbles11.png" id="11_trdvb"]
+[ext_resource type="Texture2D" uid="uid://dab5dg0exphhl" path="res://assets/anims/bubbles12.png" id="12_wjl7q"]
+[ext_resource type="Texture2D" uid="uid://ccmvdygh81d8y" path="res://assets/anims/bubbles13.png" id="13_s7rpq"]
+[ext_resource type="Texture2D" uid="uid://cyetg4ceya5yi" path="res://assets/anims/bubbles14.png" id="14_7ulei"]
+[ext_resource type="Texture2D" uid="uid://vwd8d7uwy38m" path="res://assets/anims/bubbles15.png" id="15_ljphu"]
+[ext_resource type="Texture2D" uid="uid://cgevnmjqan0la" path="res://assets/anims/bubbles17.png" id="16_dit41"]
+[ext_resource type="Texture2D" uid="uid://c8rhyimjoxhyl" path="res://assets/anims/bubbles16.png" id="17_w4nd2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eaob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5wc02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_07jga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ken47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_utfcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_avyws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1hc77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vrksk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_deevt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j1oe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ynqee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_trdvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wjl7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_s7rpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7ulei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ljphu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dit41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_w4nd2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="Bubbles" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5eaob")
+frame_progress = 0.91054
