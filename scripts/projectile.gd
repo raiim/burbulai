@@ -12,7 +12,7 @@ func _ready() -> void:
 	rotation = get_angle_to(target_position) + deg_to_rad(90)
 	velocity = Vector2(0, -1).rotated(rotation) * speed
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	velocity = lerp(velocity, Vector2.ZERO, deceleration)
 	velocity.y = lerp(velocity.y, speed, deceleration)
 	var target_rotation = velocity.angle() + deg_to_rad(90)

@@ -11,8 +11,8 @@ extends CharacterBody2D
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	var direction_normalized = direction.normalized()	
-	var actual_velocity = sqrt(pow(velocity.x, 2) + pow(velocity.y, 2))
-	var full_player_rotation_deg = rad_to_deg(player_sprite.rotation)
+	var _actual_velocity = sqrt(pow(velocity.x, 2) + pow(velocity.y, 2))
+	var _full_player_rotation_deg = rad_to_deg(player_sprite.rotation)
 	
 	# apply velocity to player by increasing moving speed by 'acceleration'
 	if direction != Vector2.ZERO:
@@ -39,8 +39,8 @@ func _physics_process(_delta: float) -> void:
 		#player_sprite.scale.x = .6
 	
 	# TODO: add debug labels
-	#print("velocity: ", actual_velocity)
-	#print("rotation: ", full_player_rotation_deg)
+	#print("velocity: ", _actual_velocity)
+	#print("rotation: ", _full_player_rotation_deg)
 		
 	move_and_slide()
 	
