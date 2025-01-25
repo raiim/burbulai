@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sdrhb1nosyjd" path="res://scenes/vignete.tscn" id="3_7aay7"]
 [ext_resource type="PackedScene" uid="uid://bn3jd2ud18o3t" path="res://scenes/UI.tscn" id="3_cgf1p"]
 [ext_resource type="PackedScene" uid="uid://c4gvwaaqdwend" path="res://scenes/fish.tscn" id="6_6k0f2"]
+[ext_resource type="PackedScene" path="res://scenes/fish_lamp.tscn" id="6_g2x1a"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="7_2b75y"]
 [ext_resource type="PackedScene" uid="uid://d0j164188co6i" path="res://scenes/fish2.tscn" id="8_1jg67"]
 [ext_resource type="PackedScene" uid="uid://cyjr7cpg1ke76" path="res://scenes/fish3.tscn" id="9_ey6un"]
@@ -13,8 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://do7e5wu20xuqs" path="res://assets/sounds/Heartbeat.ogg" id="12_se218"]
 [ext_resource type="AudioStream" uid="uid://ddobifk0cuwwx" path="res://assets/sounds/GlassCrack.ogg" id="13_cpdqo"]
 [ext_resource type="AudioStream" uid="uid://dblbh1jwxodog" path="res://assets/sounds/AirRelease.ogg" id="14_fu53m"]
-[ext_resource type="PackedScene" uid="uid://bmvnvcgbun7eb" path="res://scenes/fish_lamp.tscn" id="10_ncd52"]
-
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lvg7v")
@@ -34,15 +33,15 @@ position = Vector2(968, 537)
 audio_heart_beat = NodePath("../audio_heart_beat")
 audio_glass_crack = NodePath("../audio_glass_crack")
 
+[node name="Fish4" parent="." instance=ExtResource("6_g2x1a")]
+position = Vector2(90, 396)
+
 [node name="Spawner" type="Marker2D" parent="."]
 position = Vector2(344, -154)
 script = ExtResource("7_2b75y")
 spawn_interval_min = 1.0
 spawn_interval_max = 2.0
 items = Array[PackedScene]([ExtResource("6_6k0f2"), ExtResource("8_1jg67"), ExtResource("9_ey6un")])
-
-[node name="Fish4" parent="." instance=ExtResource("10_ncd52")]
-position = Vector2(756, 508)
 
 [node name="audio_bubles" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ruhwe")
