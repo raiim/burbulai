@@ -5,8 +5,9 @@ extends Control
 @export var audio_heart_beat: AudioStreamPlayer2D
 @export var audio_glass_crack: AudioStreamPlayer2D
 
-
 @onready var label_fps: Label = $Label
+@onready var entity_spawner_list = $ItemList
+
 
 @onready var health_full: AnimatedSprite2D = $Control/health_full
 @onready var health_medium: AnimatedSprite2D = $Control/health_medium
@@ -21,7 +22,8 @@ extends Control
 @onready var show_bandages: Sprite2D = $bandages
 
 var count_sound: int = 0
-
+var is_entity_spawner_on = false
+var entity_spawner_selected = null
 
 func _ready():
 	show_bandages.visible = false
@@ -33,6 +35,7 @@ func _ready():
 func _process(_delta):
 	if is_debug:
 		label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
+    handle_entity_spawner()
 
 	apply_bandages()
 	play_grass_crack_sound()
@@ -99,3 +102,13 @@ func update_health_status():
 		
 		low_health.visible = false
 		audio_heart_beat.pitch_scale = 0.97
+
+func handle_entity_spawner():
+	if Input.is_action_pressed("toggle_entity_spawner"):
+		is_entity_spawner_on = !is_entity_spawner_on
+	if is_entity_spawner_on:
+		var entity_spawner_selected = entity_spawner_list.get_selected_items()
+		if entity_spawner_selected != null && Input.is_action_just_released("secondary_action"):
+			if entity_spawner_selected == [1]:
+				pass
+				

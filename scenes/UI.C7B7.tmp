@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn3jd2ud18o3t"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_4a3fm"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4a3fm")
+is_debug = null
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 24.0
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1.0
+offset_right = 206.0
+offset_bottom = 144.0
+allow_search = false
+item_count = 5
+item_0/text = "Entity Spawner"
+item_0/selectable = false
+item_0/disabled = true
+item_1/text = "fish1"
+item_2/text = "fish2"
+item_3/text = "fish3"
+item_4/text = "fish_lamp"

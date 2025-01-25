@@ -90,10 +90,10 @@ script = ExtResource("1_4a3fm")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 93.0
-offset_right = 80.0
-offset_bottom = 116.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 24.0
 
 [node name="bandages" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -143,3 +143,19 @@ scale = Vector2(0.5, 0.523)
 sprite_frames = SubResource("SpriteFrames_47mii")
 autoplay = "default"
 frame_progress = 0.519605
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1.0
+offset_right = 206.0
+offset_bottom = 144.0
+allow_search = false
+item_count = 5
+item_0/text = "Entity Spawner"
+item_0/selectable = false
+item_0/disabled = true
+item_1/text = "fish1"
+item_2/text = "fish2"
+item_3/text = "fish3"
+item_4/text = "fish_lamp"
