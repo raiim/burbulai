@@ -18,3 +18,6 @@ region_rect = Rect2(0, 47.666, 128, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ymifo")
+
+[node name="BulletEmmiter" type="Marker2D" parent="."]
+position = Vector2(80, -31)

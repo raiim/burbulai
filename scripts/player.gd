@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var player_sprite: Sprite2D = $Sprite2D
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://scenes/projectile.tscn")
+@onready var emmiter = get_node("BulletEmmiter")
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
@@ -46,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 # TODO: move logic to 'harpoon' entity
 func shoot():
 	var instance = projectile.instantiate()
-	instance.spawn_position = global_position
+	instance.spawn_position = emmiter.global_position
 	instance.target_position = get_global_mouse_position()
 	main.add_child.call_deferred(instance)
 	
