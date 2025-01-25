@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmvnvcgbun7eb"]
+[gd_scene load_steps=5 format=3 uid="uid://dkk24x00ncqnq"]
 
 [ext_resource type="Script" path="res://scripts/fish.gd" id="1_fb0hv"]
 [ext_resource type="Texture2D" uid="uid://58jh8as8j6e5" path="res://assets/textures/fish3.png" id="2_mscdn"]
@@ -8,7 +8,7 @@ radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k81y"]
 
-[node name="Fish4" type="CharacterBody2D"]
+[node name="FishLamp" type="CharacterBody2D"]
 collision_layer = 10
 collision_mask = 0
 script = ExtResource("1_fb0hv")

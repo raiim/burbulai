@@ -57,4 +57,3 @@ func shoot_timer():
 	is_shoot_cooldown = true	
 	await get_tree().create_timer(projectile_return_timer).timeout
 	is_shoot_cooldown = false
-	

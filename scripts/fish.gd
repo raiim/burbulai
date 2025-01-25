@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 
 var is_move: bool = true
-var deletion_offset = 100
+var deletion_offset = 300
 var is_swim_jumpy = false
 
 func _process(_delta: float) -> void:
@@ -53,7 +53,7 @@ func move_timer():
 func handle_cleanup():
 	var width = get_viewport_rect().size.x
 	var height = get_viewport_rect().size.y
-	var deletion_offset = 300
+
 	if position.x > width + deletion_offset or position.x < -deletion_offset:
 		print("deleted!")
 		queue_free()
