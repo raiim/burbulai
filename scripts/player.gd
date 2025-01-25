@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var acceleration = 0.025
 @export var rotation_speed = 0.025
 @onready var player_sprite: Sprite2D = $Sprite2D
+@onready var main = get_tree().get_root().get_node("Game")
+@onready var projectile = load("res://scenes/projectile.tscn")
+@onready var emmiter = get_node("BulletEmmiter")
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
@@ -27,13 +30,24 @@ func _physics_process(_delta: float) -> void:
 		var target = direction_normalized.angle() + deg_to_rad(90)
 		rotation = lerp_angle(rotation, target, rotation_speed)
 	
+	if Input.is_action_just_released("shoot"):
+		shoot()
+	
 	#if Input.is_action_just_pressed("move_left"):
 		#player_sprite.scale.x = -.6
 	#if Input.is_action_just_pressed("move_right"):
 		#player_sprite.scale.x = .6
 	
 	# TODO: add debug labels
-	print("velocity: ", actual_velocity)
-	print("rotation: ", full_player_rotation_deg)
+	#print("velocity: ", actual_velocity)
+	#print("rotation: ", full_player_rotation_deg)
 		
 	move_and_slide()
+	
+# TODO: move logic to 'harpoon' entity
+func shoot():
+	var instance = projectile.instantiate()
+	instance.spawn_position = emmiter.global_position
+	instance.target_position = get_global_mouse_position()
+	main.add_child.call_deferred(instance)
+	
