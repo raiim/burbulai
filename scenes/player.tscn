@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjyapu12iy2un"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tncp8"]
-[ext_resource type="Texture2D" uid="uid://bdsl2t3koledd" path="res://assets/textures/g.png" id="2_xdbob"]
+[ext_resource type="Texture2D" uid="uid://cowuuv8fdhxk1" path="res://assets/textures/dev_character.png" id="2_qjwjt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sc3m"]
 albedo_color = Color(0.905457, 0.000696356, 0.911645, 1)
@@ -18,7 +18,9 @@ height = 100.0
 script = ExtResource("1_tncp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xdbob")
+texture = ExtResource("2_qjwjt")
+region_enabled = true
+region_rect = Rect2(0, 47.666, 128, 80)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
