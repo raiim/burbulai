@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bn3jd2ud18o3t"]
+[gd_scene load_steps=23 format=3 uid="uid://bn3jd2ud18o3t"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_4a3fm"]
 [ext_resource type="Texture2D" uid="uid://di76kt6wdejwf" path="res://assets/textures/hearts/heartG1.png" id="2_2eduo"]
+[ext_resource type="Texture2D" uid="uid://dn35cmesh38et" path="res://assets/textures/vignetes_effects/Darkness.png" id="2_bl5hj"]
 [ext_resource type="Texture2D" uid="uid://dqt3q4askj0p1" path="res://assets/textures/vignetes_effects/bandages.png" id="2_fs0ts"]
 [ext_resource type="Texture2D" uid="uid://dcdyq13qkylxo" path="res://assets/textures/hearts/heartG2.png" id="3_llv2w"]
 [ext_resource type="Texture2D" uid="uid://cwg6tol27m08g" path="res://assets/textures/hearts/heartG3.png" id="4_rlbml"]
@@ -88,12 +89,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4a3fm")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 41.0
-offset_bottom = 24.0
+[node name="darkness" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_bl5hj")
 
 [node name="bandages" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -159,3 +157,11 @@ item_1/text = "fish1"
 item_2/text = "fish2"
 item_3/text = "fish3"
 item_4/text = "fish_lamp"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 45.0
+offset_bottom = 29.0
+text = "FPS"

@@ -20,12 +20,14 @@ extends Control
 @onready var low_health: Sprite2D = $low_health
 
 @onready var show_bandages: Sprite2D = $bandages
+@onready var show_darkness: Sprite2D = $darkness
 
 var count_sound: int = 0
 var is_entity_spawner_on = false
 var entity_spawner_selected = null
 
 func _ready():
+	show_darkness.visible = true
 	show_bandages.visible = false
 	health_medium.visible = false
 	health_low.visible = false
@@ -35,7 +37,7 @@ func _ready():
 func _process(_delta):
 	if is_debug:
 		label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
-    handle_entity_spawner()
+		handle_entity_spawner()
 
 	apply_bandages()
 	play_grass_crack_sound()
@@ -107,7 +109,7 @@ func handle_entity_spawner():
 	if Input.is_action_pressed("toggle_entity_spawner"):
 		is_entity_spawner_on = !is_entity_spawner_on
 	if is_entity_spawner_on:
-		var entity_spawner_selected = entity_spawner_list.get_selected_items()
+		entity_spawner_selected = entity_spawner_list.get_selected_items()
 		if entity_spawner_selected != null && Input.is_action_just_released("secondary_action"):
 			if entity_spawner_selected == [1]:
 				pass
