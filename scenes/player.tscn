@@ -1,20 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjyapu12iy2un"]
+[gd_scene load_steps=4 format=3 uid="uid://bjyapu12iy2un"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tncp8"]
 [ext_resource type="Texture2D" uid="uid://c72cvq7hivq00" path="res://assets/textures/dev_character.png" id="2_qjwjt"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sc3m"]
-albedo_color = Color(0.905457, 0.000696356, 0.911645, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_335ma"]
-material = SubResource("StandardMaterial3D_2sc3m")
-radius = 10.0
-height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymifo"]
 height = 100.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_tncp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,10 +15,6 @@ position = Vector2(43, 9)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_qjwjt")
 region_rect = Rect2(0, 47.666, 128, 80)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_335ma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ymifo")
