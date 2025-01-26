@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 	var target_rotation = velocity.angle() + deg_to_rad(90)
 	rotation = lerp_angle(global_rotation, target_rotation, rotation_speed)
 	move_and_slide()
-
 	fish_hit()
 
 func fish_hit():

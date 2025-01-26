@@ -10,20 +10,19 @@ extends CharacterBody2D
 @export var speed : float = 300
 @export var acceleration : float = 0.009
 @export var rotation_speed : float = 0.9
-@export var timer_value: float = 3.0
+@export var move_timer_value: float = 3.0
 @export var attack_timer_value: float = 3.0
 @export var stun_timer_value: float = 1.0
 
 @onready var player = $"../Player"
 
 var is_stunned: bool = false
-var is_move: bool = true
+var can_move: bool = true
 var can_attack: bool = true
 var deletion_offset = 300
 var is_swim_jumpy = false
 var is_alive = true
 var count: int = 0
-
 
 func _ready() -> void:
 	pass
@@ -36,14 +35,24 @@ func _process(_delta: float) -> void:
 	swim_regular(target)
 	handle_cleanup()
 	move_and_slide()
+
+func timer_move():
+	can_move = false
+	await get_tree().create_timer(move_timer_value).timeout
+	can_move = true
 	
-func set_timer(toggle: bool, timer_value: float):
-	toggle = false
-	await get_tree().create_timer(timer_value).timeout
-	toggle = true
+func timer_stun():
+	is_stunned = true
+	await get_tree().create_timer(stun_timer_value).timeout
+	is_stunned = false
+	
+func timer_attack():
+	can_attack = false
+	await get_tree().create_timer(attack_timer_value).timeout
+	can_attack = true
 
 func stun():
-	set_timer(is_stunned, stun_timer_value)
+	timer_stun()
 	
 func player_takes_damage():
 	if !can_attack:
@@ -59,18 +68,21 @@ func player_takes_damage():
 				collider.take_damage(1)
 				count += 1
 
-				set_timer(can_attack, attack_timer_value)
+				timer_attack()
+				timer_stun()
 				return
 	
 func swim_regular(target: float) -> void:
+	# slow down and sluggish rotation on stun
 	if is_stunned:
 		velocity = lerp(velocity, Vector2.ZERO, acceleration)
+		rotation = lerp_angle(rotation, target, rotation_speed / 10)
 		return
 		
 	var acceleration_angle = target - deg_to_rad(90)
 	var direction = Vector2(cos(acceleration_angle), sin(acceleration_angle))
 	rotation = lerp_angle(rotation, target, rotation_speed)
-	if is_move:
+	if can_move:
 		velocity = lerp(velocity, direction * speed, acceleration)
 		#velocity = Vector2(0, -1).rotated(rotation) * speed
 		#velocity.x = lerp(velocity.x, speed, acceleration)
@@ -80,9 +92,9 @@ func swim_regular(target: float) -> void:
 	
 func swim_jumpy(target: float) -> void:
 	rotation = lerp_angle(rotation, target, rotation_speed)
-	if is_move:
+	if can_move:
 		velocity = Vector2(0, -1).rotated(rotation) * speed
-		set_timer(is_move, timer_value)
+		timer_move()
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, acceleration)
 

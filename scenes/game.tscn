@@ -1,14 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3t687n3x4y75"]
+[gd_scene load_steps=13 format=3 uid="uid://d3t687n3x4y75"]
 
 [ext_resource type="PackedScene" uid="uid://bjyapu12iy2un" path="res://scenes/player.tscn" id="1_ify5f"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_lvg7v"]
 [ext_resource type="PackedScene" uid="uid://j6l8vwesy68v" path="res://scenes/background.tscn" id="2_1eots"]
 [ext_resource type="PackedScene" uid="uid://bn3jd2ud18o3t" path="res://scenes/UI.tscn" id="3_cgf1p"]
-[ext_resource type="PackedScene" uid="uid://nhq1que1aipj" path="res://scenes/fish_ball.tscn" id="6_6k0f2"]
-[ext_resource type="PackedScene" uid="uid://bmvnvcgbun7eb" path="res://scenes/fish_lamp.tscn" id="6_g2x1a"]
+[ext_resource type="PackedScene" uid="uid://c4gvwaaqdwend" path="res://scenes/fish_ball.tscn" id="6_6k0f2"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="7_2b75y"]
-[ext_resource type="PackedScene" path="res://scenes/fish_rang.tscn" id="8_1jg67"]
-[ext_resource type="PackedScene" path="res://scenes/fish_sword.tscn" id="9_ey6un"]
+[ext_resource type="PackedScene" uid="uid://d0j164188co6i" path="res://scenes/fish_rang.tscn" id="8_1jg67"]
+[ext_resource type="PackedScene" uid="uid://cyjr7cpg1ke76" path="res://scenes/fish_sword.tscn" id="9_ey6un"]
 [ext_resource type="AudioStream" uid="uid://dsg07o63j6i7d" path="res://assets/sounds/Bubbles.ogg" id="11_ruhwe"]
 [ext_resource type="AudioStream" uid="uid://do7e5wu20xuqs" path="res://assets/sounds/Heartbeat.ogg" id="12_se218"]
 [ext_resource type="AudioStream" uid="uid://ddobifk0cuwwx" path="res://assets/sounds/GlassCrack.ogg" id="13_cpdqo"]
@@ -31,8 +30,8 @@ spawn_interval_min = 1.0
 spawn_interval_max = 2.0
 items = Array[PackedScene]([ExtResource("6_6k0f2"), ExtResource("8_1jg67"), ExtResource("9_ey6un")])
 
-[node name="FishLamp" parent="." instance=ExtResource("6_g2x1a")]
-collision_mask = 1
+[node name="FishBall" parent="." instance=ExtResource("6_6k0f2")]
+position = Vector2(1442, 559)
 
 [node name="Ui" parent="." node_paths=PackedStringArray("audio_heart_beat", "audio_glass_crack", "audio_air_release") instance=ExtResource("3_cgf1p")]
 audio_heart_beat = NodePath("../audio_heart_beat")
