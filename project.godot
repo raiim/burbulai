@@ -13,7 +13,11 @@ config_version=5
 config/name="burbulai"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=120
+run/low_processor_mode=true
 config/icon="res://icon.svg"
+config/macos_native_icon="res://icon.svg"
+config/windows_native_icon="res://icon.svg"
 
 [autoload]
 
@@ -86,3 +90,7 @@ apply_bandages={
 2d_physics/layer_2="EnemiesSoft"
 2d_physics/layer_3="Bullets"
 2d_physics/layer_4="EnemiesHard"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

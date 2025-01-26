@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://fdj0rjo55ssi"]
+[gd_scene load_steps=5 format=3 uid="uid://cbl0edquaq5hp"]
 
 [ext_resource type="Script" path="res://scripts/harpoon.gd" id="1_kchaa"]
 [ext_resource type="Texture2D" uid="uid://derwq76hfj4jg" path="res://assets/textures/character/character_arms_empty.png" id="1_xbqc3"]

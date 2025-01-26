@@ -110,8 +110,8 @@ offset_right = 1179.0
 offset_bottom = 474.0
 theme_override_colors/font_color = Color(1, 0.351989, 0.285134, 0.898039)
 theme_override_fonts/font = ExtResource("2_63ldv")
-theme_override_font_sizes/font_size = 250
-text = "Bubbles"
+theme_override_font_sizes/font_size = 200
+text = "Thalassophobia"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_button_pressed"]
