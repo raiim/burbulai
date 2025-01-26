@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4gvwaaqdwend"]
+
+[ext_resource type="Script" path="res://scripts/fish.gd" id="1_2enyy"]
+[ext_resource type="Texture2D" uid="uid://oacmqo8nfg16" path="res://assets/textures/fish/fish_ball_1.png" id="2_x8tlf"]
+[ext_resource type="Texture2D" uid="uid://dlnrxln7weuws" path="res://assets/textures/fish/fish_ball_2.png" id="3_864p1"]
+[ext_resource type="Texture2D" uid="uid://bam110mvg6e2a" path="res://assets/textures/fish/fish_ball_3.png" id="4_5ydtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8u4ta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x8tlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_864p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5ydtu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2a38f"]
+
+[node name="FishBall" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_2enyy")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_8u4ta")
+autoplay = "default"
+frame_progress = 0.933737
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(7, 7)
+shape = SubResource("CircleShape2D_2a38f")

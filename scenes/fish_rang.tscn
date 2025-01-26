@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0j164188co6i"]
+
+[ext_resource type="Script" path="res://scripts/fish.gd" id="1_4580j"]
+[ext_resource type="Texture2D" uid="uid://bcw55nbtk8xp2" path="res://assets/textures/fish/fish_rang_eat_1.png" id="2_1v5n2"]
+[ext_resource type="Texture2D" uid="uid://cw8xpqv080yvy" path="res://assets/textures/fish/fish_rang_eat_3.png" id="3_5hfya"]
+[ext_resource type="Texture2D" uid="uid://cs2o5yr5auv4e" path="res://assets/textures/fish/fish_rang_eat_2.png" id="4_xbsml"]
+[ext_resource type="Texture2D" uid="uid://bsh1gn2qgq88a" path="res://assets/textures/fish/fish_rang_swim_2.png" id="5_peu1h"]
+[ext_resource type="Texture2D" uid="uid://su3tnptq85ri" path="res://assets/textures/fish/fish_rang_swim_3.png" id="6_eo46n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4dpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1v5n2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xbsml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5hfya")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_peu1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eo46n")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[node name="FishRang" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_4580j")
+speed = 100.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_r4dpo")
+animation = &"swim"
+autoplay = "swim"
+frame_progress = 0.603354
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-12, 2)
+scale = Vector2(6.3542, 5.05406)
+polygon = PackedVector2Array(3.93441, -23.7433, 2.20327, -13.6524, 6.45243, -0.989304, 2.51802, 13.4545, 2.83277, 21.1711, -3.3049, 11.8716, -6.6098, 3.56149, -6.45243, -2.37433, -2.20327, -15.4331)
