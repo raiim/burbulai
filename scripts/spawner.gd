@@ -77,9 +77,9 @@ func timer_cooldown():
 	is_on_cooldown = false
 
 func spawn_fish():
-	print("spawning fish")
+	#print("spawning fish")
 	var current_skin = floor(randf_range(skin_min[Globals.current_stage], skin_max[Globals.current_stage]))
-	print("type:", current_skin)
+	#print("type:", current_skin)
 	var width = get_viewport_rect().size.x
 	var height = get_viewport_rect().size.y
 	var fish_scene = items[current_skin]
@@ -96,7 +96,7 @@ func spawn_fish():
 	var y = -spawn_offset
 	if x < 0 - min_dist or x > width + min_dist:
 		y = randf_range(-spawn_offset, height + spawn_offset)
-	print([x, y])
+	#print([x, y])
 		
 	fish.set_position(Vector2(x, y))
 	get_tree().get_root().get_node("Game").add_child(fish)

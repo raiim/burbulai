@@ -99,7 +99,7 @@ func take_damage(damage:int):
 		show_death_panel()
 
 func show_death_panel():
-	print("Player is dead!")
+	#print("Player is dead!")
 	get_tree().paused = true
 	ui.get_node("Panel").visible = true
 

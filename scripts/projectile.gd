@@ -56,7 +56,7 @@ func return_to_player():
 	velocity = Vector2(0, -1).rotated(rotation) * speed
 
 func delete():
-	print("deleted projectile!")
+	#print("deleted projectile!")
 	queue_free()
 
 func handle_cleanup():
@@ -64,8 +64,8 @@ func handle_cleanup():
 	var height = get_viewport_rect().size.y
 	var deletion_offset = 300
 	if position.x > width + deletion_offset or position.x < -deletion_offset:
-		print("deleted projectile!")
+		#print("deleted projectile!")
 		queue_free()
 	elif position.y > height + deletion_offset or position.y < -deletion_offset:
-		print("deleted projectile!")
+		#print("deleted projectile!")
 		queue_free()

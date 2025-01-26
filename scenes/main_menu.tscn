@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://hl8003nw7s3b"]
+[gd_scene load_steps=10 format=3 uid="uid://hl8003nw7s3b"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_byakb"]
-[ext_resource type="Texture2D" uid="uid://bijhffn46a27j" path="res://assets/textures/menu_screen.png" id="1_wlyvc"]
 [ext_resource type="FontFile" uid="uid://2dw5lypp7gtx" path="res://assets/resources/DRUNKFONTS-Regular.otf" id="2_63ldv"]
+[ext_resource type="Texture2D" uid="uid://c7023i08duchw" path="res://assets/textures/menu_mani3.png" id="2_c052r"]
+[ext_resource type="FontFile" uid="uid://chvpd1pfwvntw" path="res://assets/resources/Babalusa-cut-font.ttf" id="3_qwpnn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kla10"]
-texture = ExtResource("1_wlyvc")
+texture = ExtResource("2_c052r")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56i05"]
 
@@ -79,8 +80,8 @@ theme_override_colors/font_hover_color = Color(0.505882, 0.0431373, 0.0352941, 1
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.803922, 0.298039, 0.239216, 1)
-theme_override_fonts/font = ExtResource("2_63ldv")
-theme_override_font_sizes/font_size = 57
+theme_override_fonts/font = ExtResource("3_qwpnn")
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_56i05")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pa2gt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_w81uc")
@@ -94,8 +95,8 @@ theme_override_colors/font_hover_color = Color(0.505882, 0.0431373, 0.0352941, 1
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.803922, 0.298039, 0.239216, 1)
-theme_override_fonts/font = ExtResource("2_63ldv")
-theme_override_font_sizes/font_size = 57
+theme_override_fonts/font = ExtResource("3_qwpnn")
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_56i05")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pa2gt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_w81uc")
