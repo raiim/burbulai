@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var max_speed = 300
 @export var acceleration = 0.025
 @export var rotation_speed = 0.025
-@onready var player_sprite: Sprite2D = $Sprite2D
+@onready var player_sprite = $Sprite2D
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://scenes/projectile.tscn")
 @onready var emmiter = get_node("BulletEmmiter")

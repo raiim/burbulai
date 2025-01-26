@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyjr7cpg1ke76"]
+
+[ext_resource type="Script" path="res://scripts/fish.gd" id="1_uhtgb"]
+[ext_resource type="Texture2D" uid="uid://luvaq44ekmeg" path="res://assets/textures/fish/fish_sword_1.png" id="2_geufq"]
+[ext_resource type="Texture2D" uid="uid://bujgcfj3gqces" path="res://assets/textures/fish/fish_sword_2.png" id="3_s8vy2"]
+[ext_resource type="Texture2D" uid="uid://brgp2awe6mbug" path="res://assets/textures/fish/fish_sword_3.png" id="4_aat00"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lef4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_geufq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s8vy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aat00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yx1vk"]
+radius = 2.47563
+height = 26.5933
+
+[node name="FishSword" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_uhtgb")
+speed = 100.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, 0)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_lef4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -26)
+scale = Vector2(11.7142, 14.2141)
+shape = SubResource("CapsuleShape2D_yx1vk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(13, -208, -1, -308, -15, -198)
