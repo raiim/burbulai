@@ -27,6 +27,8 @@ func _ready() -> void:
 	arrow_hit_sound.stream = preload("res://assets/sounds/ArrowHitNew.ogg")
 
 	Globals.total_fish_count += 1
+	var target = (player.position - global_position).angle() + deg_to_rad(90)
+	rotation = target
 
 func _process(_delta: float) -> void:
 	# ensure one time evaluation
