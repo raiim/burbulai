@@ -8,7 +8,7 @@ extends Control
 
 @onready var label_fps: Label = $Label
 @onready var entity_spawner_list = $ItemList
-
+@onready var label_time = $TimeLabel
 
 @onready var health_full: AnimatedSprite2D = $Control/health_full
 @onready var health_medium: AnimatedSprite2D = $Control/health_medium
@@ -37,12 +37,14 @@ func _ready():
 	vignete_damaged.visible = false
 	vignete_medium.visible = false
 	game_end_promt.visible = false
+	label_time.position.x = get_viewport_rect().size.x / 2
 	
 func _process(_delta):
 	if is_debug:
 		label_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 		handle_entity_spawner()
-
+	
+	label_time.text = str(Globals.time_elapsed).pad_decimals(2)
 	apply_bandages()
 	play_grass_crack_sound()
 	update_health_status()
@@ -126,6 +128,7 @@ func handle_entity_spawner():
 				
 
 func _on_restart_button_pressed() -> void:
+	Globals.total_fish_count = 0
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	
