@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbsume5t76exk"]
+[gd_scene load_steps=20 format=3 uid="uid://cbsume5t76exk"]
 
 [ext_resource type="Texture2D" uid="uid://kst3j50ygw6c" path="res://assets/anims/bubbles1.png" id="1_5wc02"]
 [ext_resource type="Texture2D" uid="uid://dr3kj3rqogvm4" path="res://assets/anims/bubbles2.png" id="2_07jga"]
@@ -17,6 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://vwd8d7uwy38m" path="res://assets/anims/bubbles15.png" id="15_ljphu"]
 [ext_resource type="Texture2D" uid="uid://cgevnmjqan0la" path="res://assets/anims/bubbles17.png" id="16_dit41"]
 [ext_resource type="Texture2D" uid="uid://c8rhyimjoxhyl" path="res://assets/anims/bubbles16.png" id="17_w4nd2"]
+
+[sub_resource type="GDScript" id="GDScript_0mn3c"]
+script/source = "extends CharacterBody2D
+
+var timer_value = 2.0
+
+func start_lifetime():
+	print(\"start\")
+	await get_tree().create_timer(timer_value).timeout
+	print(\"end\")
+	queue_free()
+
+func _ready() -> void:
+	start_lifetime()
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5eaob"]
 animations = [{
@@ -75,13 +90,17 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 14.0
 }]
 
-[node name="Bubbles" type="Node2D"]
+[node name="Bubbles" type="CharacterBody2D"]
+script = SubResource("GDScript_0mn3c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -132)
 sprite_frames = SubResource("SpriteFrames_5eaob")
-frame_progress = 0.91054
+autoplay = "default"
+frame = 17
+frame_progress = 1.0

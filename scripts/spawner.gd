@@ -1,7 +1,5 @@
 extends Marker2D
 
-@export var monster_sound: AudioStreamPlayer2D
-
 
 # fishrang regular
 #@export var health: int = 5
@@ -76,7 +74,6 @@ func _process(delta: float) -> void:
 func timer_cooldown():
 	is_on_cooldown = true
 	await get_tree().create_timer(cooldown_timer_value).timeout
-	monster_sound.play()
 	is_on_cooldown = false
 
 func spawn_fish():
