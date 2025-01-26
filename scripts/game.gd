@@ -1,18 +1,18 @@
 extends Node
 
+@onready var ui = $Ui
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	$audio_bubles.playing = true
 	$audio_heart_beat.playing = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
 	
-	if Input.is_action_pressed("quit_game"):
-		get_tree().quit()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit_game"):
+		get_tree().paused = true
+		ui.get_node("Panel").visible = true
 		
-	if Input.is_action_pressed("restart_game"):
+	if event.is_action_pressed("restart_game"):
 		get_tree().reload_current_scene()
 		

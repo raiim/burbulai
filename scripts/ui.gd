@@ -58,8 +58,8 @@ func play_grass_crack_sound():
 	elif health_score == 2 and count_sound == 1:
 		audio_glass_crack.play()
 		count_sound += 1
-	elif health_score == 1 and count_sound == 1:
-		audio_air_release.play()
+	elif health_score == 1 and count_sound == 2:
+		audio_glass_crack.play()
 		count_sound += 1
 		
 func update_health_status():	
