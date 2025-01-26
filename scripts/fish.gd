@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var stun_timer_value: float = 1.0
 @export var is_swim_jumpy = false
 
+var arrow_hit_sound: AudioStreamPlayer2D
+
 @onready var player = $"../Player"
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
@@ -21,6 +23,9 @@ var is_alive = true
 var count: int = 0
 
 func _ready() -> void:
+	arrow_hit_sound = AudioStreamPlayer2D.new()
+	arrow_hit_sound.stream = preload("res://assets/sounds/ArrowHitNew.ogg")
+
 	Globals.total_fish_count += 1
 
 func _process(_delta: float) -> void:
@@ -62,6 +67,8 @@ func timer_attack():
 func hurt():
 	health -= 1
 	timer_stun()
+	arrow_hit_sound.play()
+	
 	
 func player_takes_damage():
 	if !can_attack or !is_alive:

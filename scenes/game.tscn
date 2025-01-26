@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3t687n3x4y75"]
+[gd_scene load_steps=18 format=3 uid="uid://d3t687n3x4y75"]
 
 [ext_resource type="PackedScene" uid="uid://bjyapu12iy2un" path="res://scenes/player.tscn" id="1_ify5f"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_lvg7v"]
@@ -8,11 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://bmvnvcgbun7eb" path="res://scenes/fish_lamp.tscn" id="6_g2x1a"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="7_2b75y"]
 [ext_resource type="PackedScene" uid="uid://d0j164188co6i" path="res://scenes/fish_rang.tscn" id="8_1jg67"]
-[ext_resource type="PackedScene" uid="uid://cyjr7cpg1ke76" path="res://scenes/fish_sword.tscn" id="9_ey6un"]
+[ext_resource type="PackedScene" path="res://scenes/fish_sword.tscn" id="9_ey6un"]
 [ext_resource type="AudioStream" uid="uid://dsg07o63j6i7d" path="res://assets/sounds/Bubbles.ogg" id="11_ruhwe"]
 [ext_resource type="AudioStream" uid="uid://do7e5wu20xuqs" path="res://assets/sounds/Heartbeat.ogg" id="12_se218"]
 [ext_resource type="AudioStream" uid="uid://ddobifk0cuwwx" path="res://assets/sounds/GlassCrack.ogg" id="13_cpdqo"]
+[ext_resource type="AudioStream" uid="uid://bq167ve7vybjg" path="res://assets/sounds/Shoot.ogg" id="14_5q6pg"]
 [ext_resource type="AudioStream" uid="uid://dblbh1jwxodog" path="res://assets/sounds/AirRelease.ogg" id="14_fu53m"]
+[ext_resource type="AudioStream" uid="uid://c8b21axa7bp3h" path="res://assets/sounds/Monster.ogg" id="15_2bfph"]
+[ext_resource type="AudioStream" uid="uid://ct1ecggvojq4o" path="res://assets/sounds/ArrowHitNew.ogg" id="16_eov0m"]
+[ext_resource type="AudioStream" uid="uid://ccd44l3c2sm7d" path="res://assets/sounds/Glasshit.ogg" id="17_l24jc"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lvg7v")
@@ -21,12 +25,15 @@ script = ExtResource("1_lvg7v")
 position = Vector2(959, -4096)
 stop_position = 5373.0
 
-[node name="Player" parent="." instance=ExtResource("1_ify5f")]
+[node name="Player" parent="." node_paths=PackedStringArray("audio_shoot", "hit_by_wish") instance=ExtResource("1_ify5f")]
 position = Vector2(808, 537)
+audio_shoot = NodePath("../Sounds/shoot_projectile")
+hit_by_wish = NodePath("../Sounds/hit_by_wish")
 
-[node name="Spawner" type="Marker2D" parent="."]
+[node name="Spawner" type="Marker2D" parent="." node_paths=PackedStringArray("monster_sound")]
 position = Vector2(1010, -140)
 script = ExtResource("7_2b75y")
+monster_sound = NodePath("../Sounds/monster_sound")
 items = Array[PackedScene]([ExtResource("6_6k0f2"), ExtResource("6_g2x1a"), ExtResource("8_1jg67"), ExtResource("9_ey6un")])
 
 [node name="Ui" parent="." node_paths=PackedStringArray("audio_heart_beat", "audio_glass_crack", "audio_air_release") instance=ExtResource("3_cgf1p")]
@@ -47,3 +54,18 @@ stream = ExtResource("13_cpdqo")
 
 [node name="audio_air_release" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_fu53m")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="shoot_projectile" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("14_5q6pg")
+
+[node name="monster_sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("15_2bfph")
+
+[node name="arrow_hit_sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("16_eov0m")
+area_mask = 2
+
+[node name="hit_by_wish" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("17_l24jc")
