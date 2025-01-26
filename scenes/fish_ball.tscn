@@ -29,6 +29,7 @@ collision_layer = 2
 script = ExtResource("1_2enyy")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 rotation = 0.933751
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_8u4ta")

@@ -30,6 +30,7 @@ script = ExtResource("1_fb0hv")
 rotation_speed = 0.01
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 position = Vector2(-14, 8)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_qeixq")
