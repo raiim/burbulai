@@ -36,6 +36,7 @@ func fish_hit():
 			var collition_info = get_slide_collision(i)
 			var collider = collition_info.get_collider()
 			if collider:
+				
 				#var harpoon_sprite = Sprite2D.new()
 				#harpoon_sprite.texture = load("res://assets/textures/projectile.png")
 				#harpoon_sprite.rotation = rotation
@@ -46,7 +47,7 @@ func fish_hit():
 				
 				#collider.add_child(harpoon_sprite)
 				is_stuck = true
-				print(collider.get_children())
+				collider.stun()
 				#queue_free()
 				return
 				

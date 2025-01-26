@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4gvwaaqdwend"]
+[gd_scene load_steps=7 format=3 uid="uid://nhq1que1aipj"]
 
 [ext_resource type="Script" path="res://scripts/fish.gd" id="1_2enyy"]
 [ext_resource type="Texture2D" uid="uid://oacmqo8nfg16" path="res://assets/textures/fish/fish_ball_1.png" id="2_x8tlf"]
@@ -25,7 +25,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2a38f"]
 
 [node name="FishBall" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_2enyy")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

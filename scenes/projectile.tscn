@@ -20,5 +20,9 @@ texture = ExtResource("2_c1mot")
 region_rect = Rect2(1708.99, 543.626, 791.948, 3645.37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -58)
 shape = SubResource("CapsuleShape2D_nxqei")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -90, -4, -94, -2, -98, 0, -100, 2, -97, 4, -93, 5, -89, 6, -85, 6, -79, 6, -76, 4, -78, 1, -81, 0, -81, 0, -16, -2, -16, -1, -81, -7, -74, -6, -83)
