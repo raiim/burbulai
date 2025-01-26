@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var projectile = load("res://scenes/projectile.tscn")
 
 @onready var emmiter = get_node("BulletEmmiter")
-
+@onready var harpoon_obj = get_node("Harpoon")
 @onready var ui: Control = $"../Ui"
 
 var projectile_return_timer = 3.0
@@ -45,7 +45,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_released("shoot") && !is_shoot_cooldown:
 		shoot()
-		
 	
 	# TODO: add debug labels
 	#print("velocity: ", _actual_velocity)
@@ -73,3 +72,4 @@ func take_damage(damage:int):
 	if player_health <= 0:
 		print("Player is dead!")
 		get_tree().paused = true
+		ui.get_node("Panel").visible = true

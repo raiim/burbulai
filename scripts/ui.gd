@@ -23,6 +23,8 @@ extends Control
 @onready var show_bandages: Sprite2D = $bandages
 @onready var show_darkness: Sprite2D = $darkness
 
+@onready var game_end_promt = $Panel
+
 var count_sound: int = 0
 var is_entity_spawner_on = false
 var entity_spawner_selected = null
@@ -34,6 +36,7 @@ func _ready():
 	health_low.visible = false
 	vignete_damaged.visible = false
 	vignete_medium.visible = false
+	game_end_promt.visible = false
 	
 func _process(_delta):
 	if is_debug:
@@ -121,3 +124,10 @@ func handle_entity_spawner():
 			if entity_spawner_selected == [1]:
 				pass
 				
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	
+func _on_cancel_button_pressed() -> void:
+	get_tree().quit()

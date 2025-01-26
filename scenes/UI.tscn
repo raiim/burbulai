@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bn3jd2ud18o3t"]
+[gd_scene load_steps=24 format=3 uid="uid://bn3jd2ud18o3t"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_4a3fm"]
 [ext_resource type="Texture2D" uid="uid://di76kt6wdejwf" path="res://assets/textures/hearts/heartG1.png" id="2_2eduo"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://u0txdr22fcfl" path="res://assets/textures/vignetes_effects/VigneteNew.png" id="14_n3tx4"]
 [ext_resource type="Texture2D" uid="uid://chvs8wjt3lq1e" path="res://assets/textures/vignetes_effects/Vignetedamagedmedium.png" id="15_7oc0i"]
 [ext_resource type="Texture2D" uid="uid://dfbphssd1absj" path="res://assets/textures/vignetes_effects/Vignetedamaged.png" id="16_7ncnu"]
+[ext_resource type="FontFile" uid="uid://chvpd1pfwvntw" path="res://assets/resources/Babalusa-cut-font.ttf" id="20_omy5f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5ov6"]
 animations = [{
@@ -165,3 +166,72 @@ offset_top = 6.0
 offset_right = 45.0
 offset_bottom = 29.0
 text = "FPS"
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -150.0
+offset_right = 375.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -128.0
+offset_right = 344.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.329853, 0.264302, 1)
+theme_override_fonts/font = ExtResource("20_omy5f")
+theme_override_font_sizes/font_size = 24
+text = "The cold, unyielding darkness closes in as the fish monsters drag you beneath the waves. 
+Their glowing, soulless eyes are the last thing you see as the water muffles your screams.
+The ocean claimed you, a victim of its ancient, relentless guardians.
+Would you dare to try again? Or is this where your story ends?"
+
+[node name="RestartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 45.0
+offset_right = -25.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="CancelButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = 45.0
+offset_right = 105.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/CancelButton" to="." method="_on_cancel_button_pressed"]

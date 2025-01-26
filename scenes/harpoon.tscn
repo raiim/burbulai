@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://fdj0rjo55ssi"]
+[gd_scene load_steps=5 format=3 uid="uid://cbl0edquaq5hp"]
 
+[ext_resource type="Script" path="res://scripts/harpoon.gd" id="1_kchaa"]
 [ext_resource type="Texture2D" uid="uid://derwq76hfj4jg" path="res://assets/textures/character/character_arms_empty.png" id="1_xbqc3"]
 [ext_resource type="Texture2D" uid="uid://bglvn2e1st4u5" path="res://assets/textures/character/character_arms_full.png" id="2_hfbwx"]
 
@@ -23,6 +24,7 @@ animations = [{
 }]
 
 [node name="Harpoon" type="Node2D"]
+script = ExtResource("1_kchaa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
