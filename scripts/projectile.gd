@@ -46,7 +46,7 @@ func fish_hit():
 				
 				#collider.add_child(harpoon_sprite)
 				is_stuck = true
-				collider.stun()
+				collider.hurt()
 				#queue_free()
 				return
 				
