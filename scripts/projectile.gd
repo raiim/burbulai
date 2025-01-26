@@ -43,7 +43,7 @@ func fish_hit():
 				#harpoon_sprite.position = position
 				#harpoon_sprite.global_transform = global_transform
 				self.reparent(collider)
-				
+								
 				#collider.add_child(harpoon_sprite)
 				is_stuck = true
 				collider.hurt()

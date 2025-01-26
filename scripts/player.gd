@@ -3,6 +3,10 @@ extends CharacterBody2D
 @export var max_speed = 300
 @export var acceleration = 0.025
 @export var rotation_speed = 0.025
+
+@export var audio_shoot: AudioStreamPlayer2D
+@export var hit_by_wish: AudioStreamPlayer2D
+
 @onready var player_sprite = $Sprite2D
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://scenes/projectile.tscn")
@@ -77,7 +81,9 @@ func shoot():
 	proj_instance.spawn_position = emmiter.global_position
 	proj_instance.target_position = get_global_mouse_position()
 	main.add_child.call_deferred(proj_instance)
+	audio_shoot.play()
 	shoot_timer()
+	
 	
 func shoot_timer():
 	is_shoot_cooldown = true	
@@ -87,6 +93,7 @@ func shoot_timer():
 func take_damage(damage:int):
 	player_health -= damage
 	ui.health_score = player_health
+	hit_by_wish.play()
 
 	if player_health <= 0:
 		show_death_panel()
