@@ -15,7 +15,10 @@ extends CharacterBody2D
 @export var stun_timer_value: float = 1.0
 
 @onready var player = $"../Player"
+@onready var sprite = $Sprite2D
+@onready var collision_shape = $CollisionShape2D
 
+var health: int = 2
 var is_stunned: bool = false
 var can_move: bool = true
 var can_attack: bool = true
@@ -24,10 +27,14 @@ var is_swim_jumpy = false
 var is_alive = true
 var count: int = 0
 
-func _ready() -> void:
-	pass
-
 func _process(_delta: float) -> void:
+	if health <= 0:
+		is_alive = false
+	
+	if !is_alive:
+		sprite.stop()
+		collision_shape.disabled = true
+		
 	player_takes_damage()
 	# target should be player or point	
 	var target = (player.position - global_position).angle() + deg_to_rad(90)
@@ -51,12 +58,14 @@ func timer_attack():
 	await get_tree().create_timer(attack_timer_value).timeout
 	can_attack = true
 
-func stun():
+func hurt():
+	health -= 1
 	timer_stun()
 	
 func player_takes_damage():
-	if !can_attack:
+	if !can_attack or !is_alive:
 		return
+		
 	var collision_count = get_slide_collision_count()
 	for i in collision_count:
 		if i:
@@ -73,6 +82,10 @@ func player_takes_damage():
 				return
 	
 func swim_regular(target: float) -> void:
+	if !is_alive:
+		velocity = lerp(velocity, Vector2(0, speed), acceleration / 2)
+		return
+		
 	# slow down and sluggish rotation on stun
 	if is_stunned:
 		velocity = lerp(velocity, Vector2.ZERO, acceleration)
