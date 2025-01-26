@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bn3jd2ud18o3t"]
+[gd_scene load_steps=31 format=3 uid="uid://bn3jd2ud18o3t"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_4a3fm"]
 [ext_resource type="Texture2D" uid="uid://di76kt6wdejwf" path="res://assets/textures/hearts/heartG1.png" id="2_2eduo"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://chvs8wjt3lq1e" path="res://assets/textures/vignetes_effects/Vignetedamagedmedium.png" id="15_7oc0i"]
 [ext_resource type="Texture2D" uid="uid://dfbphssd1absj" path="res://assets/textures/vignetes_effects/Vignetedamaged.png" id="16_7ncnu"]
 [ext_resource type="FontFile" uid="uid://chvpd1pfwvntw" path="res://assets/resources/Babalusa-cut-font.ttf" id="20_omy5f"]
+[ext_resource type="FontFile" uid="uid://2dw5lypp7gtx" path="res://assets/resources/DRUNKFONTS-Regular.otf" id="21_6i3tm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5ov6"]
 animations = [{
@@ -80,6 +81,35 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j16ka"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.733333)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74sfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmlj1"]
+bg_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irrfx"]
+bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcfy6"]
+bg_color = Color(0.286275, 0.282353, 0.262745, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij6qg"]
+bg_color = Color(0.286275, 0.282353, 0.262745, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -151,6 +181,7 @@ autoplay = "default"
 frame_progress = 0.519605
 
 [node name="ItemList" type="ItemList" parent="."]
+visible = false
 z_index = 100
 layout_mode = 0
 offset_left = 69.0
@@ -168,6 +199,7 @@ item_3/text = "fish3"
 item_4/text = "fish_lamp"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 100
 layout_mode = 0
 offset_left = 5.0
@@ -191,6 +223,7 @@ offset_right = 375.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j16ka")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -220,12 +253,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 45.0
-offset_right = -25.0
-offset_bottom = 76.0
+offset_left = -220.0
+offset_top = 56.0
+offset_right = -42.0
+offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.505882, 0.0431373, 0.0352941, 1)
+theme_override_colors/font_color = Color(0.803922, 0.298039, 0.239216, 1)
+theme_override_fonts/font = ExtResource("21_6i3tm")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_74sfx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rmlj1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_irrfx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qcfy6")
 text = "Restart"
 
 [node name="CancelButton" type="Button" parent="Panel"]
@@ -235,12 +276,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 45.0
-offset_top = 45.0
-offset_right = 105.0
-offset_bottom = 76.0
+offset_top = 63.0
+offset_right = 191.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.505882, 0.0431373, 0.0352941, 1)
+theme_override_colors/font_color = Color(0.803922, 0.298039, 0.239216, 1)
+theme_override_fonts/font = ExtResource("21_6i3tm")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_74sfx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rmlj1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_irrfx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij6qg")
 text = "Cancel"
 
 [connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
