@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @onready var emmiter = get_node("BulletEmmiter")
 @onready var harpoon_obj = get_node("Harpoon")
+@onready var harpoon_sprite = $Harpoon/AnimatedSprite2D
 @onready var ui: Control = $"../Ui"
 
 var projectile_return_timer = 3.0
@@ -33,6 +34,11 @@ func _physics_process(_delta: float) -> void:
 	if player_is_outside_the_screen() and !is_on_damage_cooldown:
 		set_timer()
 		take_damage(1)
+		
+	if is_shoot_cooldown:
+		harpoon_sprite.animation = "empty"
+	else:
+		harpoon_sprite.animation = "full"
 		
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	var direction_normalized = direction.normalized()	

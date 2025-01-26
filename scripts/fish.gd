@@ -1,35 +1,34 @@
 extends CharacterBody2D
 
-# lamp jumpy
-#@export var speed : float = 700
-#@export var acceleration : float = 0.009
-#@export var rotation_speed : float = 0.025
-#@export var timer_value: float = 2.0
-
-@export var attack_min_speed: float = 50
+@export var health: int = 2
 @export var speed : float = 300
 @export var acceleration : float = 0.009
 @export var rotation_speed : float = 0.9
 @export var move_timer_value: float = 3.0
 @export var attack_timer_value: float = 3.0
 @export var stun_timer_value: float = 1.0
+@export var is_swim_jumpy = false
 
 @onready var player = $"../Player"
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
 
-var health: int = 2
 var is_stunned: bool = false
 var can_move: bool = true
 var can_attack: bool = true
 var deletion_offset = 300
-var is_swim_jumpy = false
 var is_alive = true
 var count: int = 0
 
+func _ready() -> void:
+	Globals.total_fish_count += 1
+
 func _process(_delta: float) -> void:
-	if health <= 0:
+	# ensure one time evaluation
+	if health == 0:
 		is_alive = false
+		Globals.total_fish_count -= 1
+		health -= 1
 	
 	if !is_alive:
 		sprite.stop()
@@ -38,8 +37,10 @@ func _process(_delta: float) -> void:
 	player_takes_damage()
 	# target should be player or point	
 	var target = (player.position - global_position).angle() + deg_to_rad(90)
-	#swim_jumpy(target)
-	swim_regular(target)
+	if is_swim_jumpy:
+		swim_jumpy(target)
+	else:
+		swim_regular(target)
 	handle_cleanup()
 	move_and_slide()
 
@@ -83,7 +84,9 @@ func player_takes_damage():
 	
 func swim_regular(target: float) -> void:
 	if !is_alive:
-		velocity = lerp(velocity, Vector2(0, speed), acceleration / 2)
+		velocity = lerp(velocity, Vector2(0, speed), acceleration / 4)
+		var target_rotation = velocity.angle() + deg_to_rad(90)
+		rotation = lerp_angle(rotation, target_rotation, rotation_speed)
 		return
 		
 	# slow down and sluggish rotation on stun
@@ -104,6 +107,17 @@ func swim_regular(target: float) -> void:
 		velocity = lerp(velocity, Vector2.ZERO, acceleration)
 	
 func swim_jumpy(target: float) -> void:
+	if !is_alive:
+		velocity = lerp(velocity, Vector2(0, speed), acceleration / 4)
+		var target_rotation = velocity.angle() + deg_to_rad(90)
+		rotation = lerp_angle(rotation, target_rotation, rotation_speed)
+		return
+		
+	if is_stunned:
+		velocity = lerp(velocity, Vector2.ZERO, acceleration)
+		rotation = lerp_angle(rotation, target, rotation_speed / 10)
+		return
+		
 	rotation = lerp_angle(rotation, target, rotation_speed)
 	if can_move:
 		velocity = Vector2(0, -1).rotated(rotation) * speed

@@ -36,20 +36,22 @@ animations = [{
 }]
 
 [node name="FishRang" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_4580j")
 speed = 100.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 6
-position = Vector2(17, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(17, 56)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_r4dpo")
 animation = &"swim"
 autoplay = "swim"
 frame_progress = 0.603354
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-12, 2)
-scale = Vector2(6.3542, 5.05406)
-polygon = PackedVector2Array(3.93441, -23.7433, 2.20327, -13.6524, 6.45243, -0.989304, 2.51802, 13.4545, 2.83277, 21.1711, -3.3049, 11.8716, -6.6098, 3.56149, -6.45243, -2.37433, -2.20327, -15.4331)
+position = Vector2(10, -12)
+rotation = 1.57079
+scale = Vector2(16.2379, 12.9156)
+polygon = PackedVector2Array(4.2492, -21.7647, 2.20327, -13.6524, 6.45243, -0.989304, 3.1475, 13.6524, 4.72125, 20.9733, -2.99017, 11.2781, -6.6098, 3.56149, -6.45243, -2.37433, -2.99013, -13.2567)
