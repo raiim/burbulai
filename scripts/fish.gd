@@ -12,9 +12,11 @@ extends CharacterBody2D
 @export var rotation_speed : float = 0.9
 @export var timer_value: float = 3.0
 @export var attack_timer_value: float = 3.0
+@export var stun_timer_value: float = 1.0
 
 @onready var player = $"../Player"
 
+var is_stunned: bool = false
 var is_move: bool = true
 var can_attack: bool = true
 var deletion_offset = 300
@@ -35,11 +37,13 @@ func _process(_delta: float) -> void:
 	handle_cleanup()
 	move_and_slide()
 	
+func set_timer(toggle: bool, timer_value: float):
+	toggle = false
+	await get_tree().create_timer(timer_value).timeout
+	toggle = true
 
-func attack_cooldown_timer():
-	can_attack = false
-	await get_tree().create_timer(attack_timer_value).timeout
-	can_attack = true
+func stun():
+	set_timer(is_stunned, stun_timer_value)
 	
 func player_takes_damage():
 	if !can_attack:
@@ -54,11 +58,15 @@ func player_takes_damage():
 				#if get_actual_velocity() >= attack_min_speed:
 				collider.take_damage(1)
 				count += 1
-				attack_cooldown_timer()
+
+				set_timer(can_attack, attack_timer_value)
 				return
-			
 	
 func swim_regular(target: float) -> void:
+	if is_stunned:
+		velocity = lerp(velocity, Vector2.ZERO, acceleration)
+		return
+		
 	var acceleration_angle = target - deg_to_rad(90)
 	var direction = Vector2(cos(acceleration_angle), sin(acceleration_angle))
 	rotation = lerp_angle(rotation, target, rotation_speed)
@@ -74,15 +82,10 @@ func swim_jumpy(target: float) -> void:
 	rotation = lerp_angle(rotation, target, rotation_speed)
 	if is_move:
 		velocity = Vector2(0, -1).rotated(rotation) * speed
-		move_timer()
+		set_timer(is_move, timer_value)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, acceleration)
-	
-func move_timer():
-	is_move = false
-	await get_tree().create_timer(timer_value).timeout
-	is_move = true
-	
+
 func handle_cleanup():
 	var width = get_viewport_rect().size.x
 	var height = get_viewport_rect().size.y
