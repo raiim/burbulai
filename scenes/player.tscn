@@ -57,7 +57,10 @@ shape = SubResource("CapsuleShape2D_ymifo")
 [node name="BulletEmmiter" type="Marker2D" parent="."]
 position = Vector2(71, -21)
 
-[node name="Harpoon" parent="." instance=ExtResource("6_2qb6d")]
+[node name="Harpoon" parent="." node_paths=PackedStringArray("emitter_object") instance=ExtResource("6_2qb6d")]
 z_index = 7
 y_sort_enabled = true
 position = Vector2(-1, -36)
+emitter_object = NodePath("../BulletEmmiter")
+
+[editable path="Harpoon"]

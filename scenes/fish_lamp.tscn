@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmvnvcgbun7eb"]
+[gd_scene load_steps=5 format=3 uid="uid://bmvnvcgbun7eb"]
 
 [ext_resource type="Script" path="res://scripts/fish.gd" id="1_fb0hv"]
 [ext_resource type="Texture2D" uid="uid://drlpqqy17xqdv" path="res://assets/textures/fish/fish_lamp_2.png" id="2_fwyv3"]
@@ -18,14 +18,8 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ga65"]
-radius = 3.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7k81y"]
-
 [node name="FishLamp" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_fb0hv")
 rotation_speed = 0.01
 
@@ -37,12 +31,7 @@ sprite_frames = SubResource("SpriteFrames_qeixq")
 autoplay = "default"
 frame_progress = 0.490253
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-3, 2.99999)
 scale = Vector2(5, 3.2)
-shape = SubResource("CapsuleShape2D_4ga65")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(1, -76)
-scale = Vector2(4, 4)
-shape = SubResource("CircleShape2D_7k81y")
+polygon = PackedVector2Array(0.6, -37.5, -3.2, -35.3125, -6.4, -28.75, -7, -20.9375, -5, -13.125, -3.2, -5.9375, -2.4, 1.5625, -3.2, 7.1875, -0.2, 8.75, 3, 7.5, 2.4, 1.875, 3.6, -4.375, 5.8, -11.875, 7.8, -17.8125, 8.2, -27.8125, 5.4, -35)

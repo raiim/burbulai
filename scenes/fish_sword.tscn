@@ -27,7 +27,7 @@ radius = 2.47563
 height = 26.5933
 
 [node name="FishSword" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_uhtgb")
 speed = 100.0
 
