@@ -6,12 +6,20 @@ extends CharacterBody2D
 @onready var player_sprite = $Sprite2D
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://scenes/projectile.tscn")
+
 @onready var emmiter = get_node("BulletEmmiter")
+
+@onready var ui: Control = $"../Ui"
 
 var projectile_return_timer = 3.0
 var is_shoot_cooldown = false
 var proj_instance
 
+var player_health: int = 4
+
+
+func _ready() -> void:
+	pass	
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
@@ -57,3 +65,11 @@ func shoot_timer():
 	is_shoot_cooldown = true	
 	await get_tree().create_timer(projectile_return_timer).timeout
 	is_shoot_cooldown = false
+
+func take_damage(damage:int):
+	player_health -= damage
+	ui.health_score = player_health
+	
+	if player_health <= 0:
+		print("Player is dead!")
+		get_tree().paused = true

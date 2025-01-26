@@ -22,7 +22,7 @@ position = Vector2(959, -4096)
 stop_position = 5373.0
 
 [node name="Player" parent="." instance=ExtResource("1_ify5f")]
-position = Vector2(968, 537)
+position = Vector2(808, 537)
 
 [node name="Spawner" type="Marker2D" parent="."]
 position = Vector2(344, -154)
@@ -32,10 +32,15 @@ spawn_interval_max = 2.0
 items = Array[PackedScene]([ExtResource("6_6k0f2"), ExtResource("8_1jg67"), ExtResource("9_ey6un")])
 
 [node name="FishLamp" parent="." instance=ExtResource("6_g2x1a")]
+visible = false
 
-[node name="Ui" parent="." node_paths=PackedStringArray("audio_heart_beat", "audio_glass_crack") instance=ExtResource("3_cgf1p")]
+[node name="Fish3" parent="." instance=ExtResource("9_ey6un")]
+position = Vector2(1564, 526)
+
+[node name="Ui" parent="." node_paths=PackedStringArray("audio_heart_beat", "audio_glass_crack", "audio_air_release") instance=ExtResource("3_cgf1p")]
 audio_heart_beat = NodePath("../audio_heart_beat")
 audio_glass_crack = NodePath("../audio_glass_crack")
+audio_air_release = NodePath("../audio_air_release")
 
 [node name="audio_bubles" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ruhwe")

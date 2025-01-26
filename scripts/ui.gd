@@ -4,6 +4,7 @@ extends Control
 @export var health_score: int = 4
 @export var audio_heart_beat: AudioStreamPlayer2D
 @export var audio_glass_crack: AudioStreamPlayer2D
+@export var audio_air_release: AudioStreamPlayer2D
 
 @onready var label_fps: Label = $Label
 @onready var entity_spawner_list = $ItemList
@@ -54,7 +55,10 @@ func play_grass_crack_sound():
 	elif health_score == 2 and count_sound == 1:
 		audio_glass_crack.play()
 		count_sound += 1
-
+	elif health_score == 1 and count_sound == 1:
+		audio_air_release.play()
+		count_sound += 1
+		
 func update_health_status():	
 	if health_score == 3:
 		health_full.visible = false
@@ -67,6 +71,7 @@ func update_health_status():
 		
 		low_health.visible = false
 		audio_heart_beat.pitch_scale = 1.37
+		audio_heart_beat.volume_db = 5
 	
 		
 	elif health_score == 2:
@@ -80,6 +85,7 @@ func update_health_status():
 		
 		low_health.visible = false
 		audio_heart_beat.pitch_scale = 1.45
+		audio_heart_beat.volume_db = 8
 		
 	elif health_score == 1:
 		health_full.visible = false
@@ -92,6 +98,7 @@ func update_health_status():
 		
 		low_health.visible = true
 		audio_heart_beat.pitch_scale = 1.45
+		audio_heart_beat.volume_db = 10
 		
 	else:
 		health_full.visible = true
