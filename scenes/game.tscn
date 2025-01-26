@@ -31,16 +31,7 @@ spawn_interval_min = 1.0
 spawn_interval_max = 2.0
 items = Array[PackedScene]([ExtResource("6_6k0f2"), ExtResource("8_1jg67"), ExtResource("9_ey6un")])
 
-[node name="FishBall" parent="." instance=ExtResource("6_6k0f2")]
-position = Vector2(1442, 559)
-
-[node name="FishSword" parent="." instance=ExtResource("9_ey6un")]
-position = Vector2(742, 1476)
-collision_layer = 2
-collision_mask = 1
-
 [node name="FishLamp" parent="." instance=ExtResource("6_g2x1a")]
-position = Vector2(-15, 301)
 collision_mask = 1
 
 [node name="Ui" parent="." node_paths=PackedStringArray("audio_heart_beat", "audio_glass_crack", "audio_air_release") instance=ExtResource("3_cgf1p")]
